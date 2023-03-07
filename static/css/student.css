@@ -1,0 +1,22 @@
+#class-filter {
+    padding: 50px;
+    display: flex;
+}
+
+.filter-button {
+    font-size: 22px;
+    cursor: pointer;
+    padding: 12.5px 60px;
+    border-radius: 500px;
+    color: #ffffff;
+    background-color: #d30f4c;
+    border: none;
+    border-color: transparent;
+    transition: 300ms;
+    margin-top: 10px;
+}
+
+.filter-button:hover {
+    background-color: var(--white);
+    transition: all 200ms;
+}
