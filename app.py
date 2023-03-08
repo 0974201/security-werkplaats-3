@@ -154,18 +154,20 @@ def meetingforteacher():
 @app.route('/api/student')
 def api_get_students():
     s_list = studentdb.get_student_json()
+    c_list = classdb.get_class()
     #print(s_list)
     # ik weet niet wat ik aan het doen ben, help
     #return json.dumps(s_list)
     return jsonify({ # oke, mooi. wat doe ik nu hier mee?
-        'studenten' : s_list
+        'studenten' : s_list , 'klassen' : c_list
     })
 
 @app.route('/student2')
 def student2():
     match request.method:
         case 'GET':
-            return render_template('student2.html')
+            c_list = classdb.get_class()
+            return render_template('student2.html', classes=c_list)
         case 'POST':
             print("POST")
 

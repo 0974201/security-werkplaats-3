@@ -2,8 +2,7 @@
 {% block title %}Dashboard{% endblock %}
 {% block content %}
 <body>
-    <!-- <div id="meeting-div">Meetings
-    </div> -->
+   <!-- Rode knop naast Meetings en veel divjes -->
   <div id="maih">
     <div id="meeting-border">
       <div id="meeting-header">
@@ -22,6 +21,7 @@
       </div>
       <!-- De dropdown lijst voor andere docenten -->
       <select name="Select-Teacher" id="Select-Teacher">
+        <option value="disabled">Selecteer Docent</option>
         {% for teacher in teachers %}
        <option value="{{ teacher[0] }}">{{ teacher[0] }}</option>
        {% endfor %}
@@ -72,6 +72,8 @@
       </div>  
       <div>
     </div>
+
+    <!-- Dit is alles met userbalk rechts -->
     <div class= "Greet-Balk" id="Greet-Balk"> <br>
         {% if session.logged_in %}
         <p class="Greet-Text">

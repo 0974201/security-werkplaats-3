@@ -6,6 +6,12 @@
 {% block content %}
     <main>
         <h1>Studenten</h1>
+        {% for class in classes %}
+        <button class="filter-button">
+            {{class[0]}}
+        </button>
+        {% endfor %}
+        
         <div id="test">
             <table id="tabel">
                 <thead>

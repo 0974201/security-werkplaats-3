@@ -22,7 +22,7 @@ const get_meeting = async () => {
             let futureDate = new Date(data["meeting_info"][2]["date"])
             let currentDate = new Date();
             console.log(futureDate)
-            if (data["meeting_info"].length > 0) {
+            if ((data["meeting_info"].length > 0) && (futureDate > currentDate)) {
                 const tbody = document.querySelector("#docent-body")
                 let planning_length = 0
                 let max_length = 3

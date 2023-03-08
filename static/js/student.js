@@ -1,13 +1,13 @@
-async function get_students(){
+async function get_students() {
     try {
         const response = await fetch('../api/student');
         const student = await response.json();
-        
+
         console.log(`${JSON.stringify(student)}`);
 
         fill_table(student);
 
-    } catch(error) {
+    } catch (error) {
         const err = document.getElementById('test');
         const txt = document.createElement('p');
 
@@ -18,19 +18,19 @@ async function get_students(){
     }
 }
 
-function fill_table(obj){
+function fill_table(obj) {
     const table = document.getElementById('tabel');
     const students = obj.studenten;
     const tb = document.createElement('tbody');
 
     table.appendChild(tb);
-    
-    for(const student of students){
-        
+
+    for (const student of students) {
+
         let tr = document.createElement('tr');
         tr.innerHTML = '<td>' + student.id + '</td>'
-        + '<td>' + student.voornaam + '</td>' +
-        '<td>' + student.achternaam + '</td>';
+            + '<td>' + student.voornaam + '</td>' +
+            '<td>' + student.achternaam + '</td>';
         tb.appendChild(tr);
     }
 }
