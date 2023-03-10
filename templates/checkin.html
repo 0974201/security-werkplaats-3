@@ -5,10 +5,12 @@
 {% endblock head %}
 {% block content %}
     <div id="checkin_content">
-        <form>
+        <form action="/POST">
             {% if question is not none %}
                 <div id="answer_box">
-                    <h3>{{ question }}</h3>
+                    <h3>
+                    {{ question }}
+                    </h3>
                     <label>
                         <input>
                     </label>
