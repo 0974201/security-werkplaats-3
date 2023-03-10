@@ -39,14 +39,9 @@ const get_meeting = async () => {
 
                     let presence_options =
                         "<td class='presence_options'>" +
-                        // "<div id='button_presence_yes' class='button_presence' data-value='1' data-count=" + student_count + ">:)</div>" +
-                        // "<div id='button_presence_maybe' class='button_presence' data-value='2' data-count=" + student_count + ">:|</div>" +
-                        // "<div id='button_presence_no' class='button_presence' data-value='0' data-count=" + student_count + ">:(</div>" +
-                        "<select>" +
-                        "<option id='button_presence_yes' class='button_presence' data-value='1' data-count=" + student_count + ">Aanwezig</option>" +
-                        "<option id='button_presence_maybe' class='button_presence' data-value='2' data-count=" + student_count + ">Afgemeld</option>" +
-                        "<option id='button_presence_no' class='button_presence' data-value='0' data-count=" + student_count + ">Afwezig</option>" +
-                        "</select>"
+                        "<div id='button_presence_yes' class='button_presence' data-value='1' data-count=" + student_count + ">:)</div>" +
+                        "<div id='button_presence_maybe' class='button_presence' data-value='2' data-count=" + student_count + ">:|</div>" +
+                        "<div id='button_presence_no' class='button_presence' data-value='0' data-count=" + student_count + ">:(</div>" +
                         "</td>"
 
 
