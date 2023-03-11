@@ -39,17 +39,18 @@
 
                         {% endfor %}
                     </label>
-                    <label>Klas(sen):<br>
-                        {% for class in classes %}
-                            <div>
-                                <label for="meeting_class">
-                                    <input type="checkbox" name="meeting_class" value="{{ class[0] }}">
-                                    <span>{{ class[0] }}</span>
-                                </label><br>
-                            </div>
+                    <div id="class_box">
+                        <label>Klas(sen):<br>
+                            <select id="class_select">
+                                {% for class in classes %}
+                                    <option>{{ class[0] }}</option>
+                                {% endfor %}
+                            </select>
+                        </label>
+                        <table id="class_list">
 
-                        {% endfor %}
-                    </label>
+                        </table>
+                    </div>
                 </div>
             </div>
             <div id="button">
@@ -61,4 +62,5 @@
 {% block script %}
     {{ super() }}
     <script src="../static/js/get_datetime.js"></script>
+    <script src="../static/js/creat_meeting.js"></script>
 {% endblock script %}
