@@ -30,6 +30,7 @@
                 <div id="teacher_box">
                     <label>Leraar(en):<br>
                         <select id="teacher_select">
+                            <option disabled selected>Selecteer leraren</option>
                             {% for teacher in teachers %}
                                 <option>{{ teacher[0] }}</option>
                             {% endfor %}
@@ -42,6 +43,7 @@
                 <div id="class_box">
                     <label>Klas(sen):<br>
                         <select id="class_select">
+                        <option disabled selected>Selecteer Klassen</option>
                             {% for class in classes %}
                                 <option>{{ class[0] }}</option>
                             {% endfor %}
