@@ -1,31 +1,79 @@
+const meetingName = document.querySelector("#meeting_name")
+const meetingDate = document.querySelector("#meeting_date")
+const meetingStartTime = document.querySelector("#meeting_start_time")
+const meetingEndTime = document.querySelector("#meeting_end_time")
+const meetingLocation = document.querySelector("#meeting_location")
+
+const teacherSelect = document.querySelector("#teacher_select")
+const teacherTable = document.querySelector("#teacher_list")
+let teacherList = []
+
 const classSelect = document.querySelector("#class_select")
-const classList = document.querySelector("#class_list")
-let list = []
+const classTable = document.querySelector("#class_list")
+let classList = []
 
 classSelect.addEventListener("change", function (){
-    if (list.indexOf(classSelect.value) === -1){
-        list.push(classSelect.value)
-        addList(list)
+    if (classList.indexOf(classSelect.value) === -1){
+        classList.push(classSelect.value)
+        const classification = "remove_class"
+        addList(classList, classTable, classification)
     }
 })
 
-function addList(list) {
-    classList.replaceChildren()
+teacherSelect.addEventListener("change", function (){
+    if (teacherList.indexOf(teacherSelect.value) === -1){
+        teacherList.push(teacherSelect.value)
+        const classification = "remove_teacher"
+        addList(teacherList, teacherTable, classification)
+    }
+})
+
+function addList(list, table, classification) {
+    table.replaceChildren()
     let i = 0
     while (i < list.length) {
-        classList.innerHTML += "<td>" + list[i] + "<div class='remove_class'>x</div></td>"
+        table.innerHTML += "<td>" + list[i] + "</td><td class=" + classification + " data-i=" + i + ">x</td>"
         i++
     }
-    console.log(list)
+    removeItem(list, table, classification)
 }
 
-document.querySelectorAll(".remove_class").forEach(button => {
-    button.addEventListener("hover", function (){
-        classList.removeChild(classList.firstChild)
-        console.log("work")
-    }, false)
-})
+function removeItem(list, table, classification){
+    document.querySelectorAll("." + classification).forEach(item => {
+        let index = item.dataset.i
 
-function removeItem() {
+        item.addEventListener("click", function (){
+            list.splice(index, 1)
+            addList(list, table, classification)
+        }, false)
+    })
+}
+
+function log(){
+    if (meetingDate.value !== "" &&
+    meetingStartTime.value !== "" &&
+    meetingEndTime.value !== "" &&
+    meetingLocation.value !== "" &&
+    teacherList.length !== 0 &&
+    classList.length !== 0){
+        fetch('/meeting/new', {
+            method : 'POST',
+            body : JSON.stringify( {
+                'name' : meetingName.value,
+                'date' : meetingDate.value,
+                'start time' : meetingStartTime.value,
+                'end time' : meetingEndTime.value,
+                'location' : meetingLocation.value,
+                'teacher' : teacherList,
+                'class' : classList
+            }),
+            headers: {
+                'Content-type': 'application/json'
+            }
+        })
+    }else{
+        console.log("vul alles in")
+    }
+
 
 }

@@ -47,12 +47,17 @@
     margin-top: 20px;
 }
 
+#meeting_form #teacher_box {
+    display: flex;
+    flex-direction: column;
+}
+
 #meeting_form #class_box {
     display: flex;
     flex-direction: column;
 }
 
-#meeting_form .remove_class {
+#meeting_form .remove_class, #meeting_form .remove_teacher {
     background-color: #c50e47;
     margin: 5px;
 }

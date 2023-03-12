@@ -74,9 +74,7 @@ const get_meeting = async () => {
 
 
         document.querySelectorAll(".button_presence").forEach(presence_option => {
-            presence_option.addEventListener(
-                "click",
-                function (){
+            presence_option.addEventListener("click", function (){
                     let student = this.dataset.count
                     let presence = parseInt(this.dataset.value)
                     if (data["presence_list"][student]["presence"] !== presence) {
