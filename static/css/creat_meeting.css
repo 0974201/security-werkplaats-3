@@ -62,11 +62,20 @@
     margin: 5px;
 }
 
+#teacher_list td:last-child, #class_list td:last-child {
+    width: 15%;
+    color: var(--white);
+}
+
 @media (pointer:coarse) {
 
     #meeting_form {
         transform: scale(2.5);
         transform-origin: top;
+    }
+
+    #lists table {
+        transform: scale(1);
     }
 
     #meeting_form #inputs {
