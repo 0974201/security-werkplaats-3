@@ -24,16 +24,16 @@ const get_meeting = async () => {
                 let array_length = meeting_array.length
                 let currentDate = new Date().toISOString().slice(0,new Date().toISOString().lastIndexOf("T"));
                 console.log("c:"+currentDate)
+                console.log(meeting_array)
                 tbody.replaceChildren()
                 while (planning_length < array_length && planning_length < max_length) {
-                    if (meeting_array[planning_length]["date"] < currentDate) {
-                        console.log("t:"+meeting_array[planning_length]["date"])
-                        tbody.innerHTML += " <td><strong> " + meeting_array[planning_length]["name"] + "</strong> <small>" + meeting_array[planning_length]["date"] + "</small></td>";
-                        planning_length++
+                    if (meeting_array[planning_length]["date"] <= currentDate) {
+                        meeting_array.splice(planning_length, 1)
+                        console.log(meeting_array)
                     }
-                    array_length--
-                    console.log("a:"+array_length)
-                    console.log("p:"+planning_length)
+                    console.log("t:"+meeting_array[planning_length]["date"])
+                    tbody.innerHTML += " <td><strong> " + meeting_array[planning_length]["name"] + "</strong> <small>" + meeting_array[planning_length]["date"] + "</small></td>";
+                    planning_length++
                 }
             }
         }
