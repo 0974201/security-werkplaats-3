@@ -26,7 +26,7 @@ const get_meeting = async () => {
                 console.log("c:"+currentDate)
                 tbody.replaceChildren()
                 while (planning_length < array_length && planning_length < max_length) {
-                    if (meeting_array[planning_length]["date"] < currentDate) {
+                    if (meeting_array[planning_length]["date"] > currentDate) {
                         console.log("t:"+meeting_array[planning_length]["date"])
                         tbody.innerHTML += " <td><strong> " + meeting_array[planning_length]["name"] + "</strong> <small>" + meeting_array[planning_length]["date"] + "</small></td>";
                         planning_length++

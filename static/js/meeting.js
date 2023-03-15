@@ -63,7 +63,7 @@ const get_meeting = async () => {
                     student_count++
                 }
                 meetingFooter.replaceChildren()
-                meetingFooter.innerHTML = "<td>" + "</td>" + "<td>" + student_presence + "/" + student_count + " " + "aanwezig" + "</td>" + "<td>" + "</td>"
+                meetingFooter.innerHTML = "<td></td><td></td><td>" + student_presence + "/" + student_count + " " + "aanwezig" + "</td><td></td>"
             } else {
                 console.log(data.length)
                 const meetingInfo = document.querySelector("#presence_table")
