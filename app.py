@@ -53,9 +53,7 @@ def check_login():
 
 @app.route("/", methods=["GET","POST"])
 def link():
-    match request.method:
-        case 'GET':
-            teacher_list = teacherdb.get_teacher()
+    teacher_list = teacherdb.get_teacher()
     return render_template('link.html', teachers=teacher_list)
 
 @app.route("/test-ajax.html", methods = ['GET'])
