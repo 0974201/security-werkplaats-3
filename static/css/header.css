@@ -30,11 +30,31 @@ header button {
     font-size: var(--font-size);
     font-weight: 600;
     line-height: 16px;
-    border-radius: 6px;
+    border-radius: var(--border-radius-button);
     padding: 10px;
     margin-left: 4px;
     border: none;
     text-decoration: none;
+}
+
+header button a {
+    color: var(--white);
+    text-decoration: none;
+}
+
+header button:hover {
+    background-color: var(--white);
+    color: var(--hr-red);
+    transition: 200ms;
+}
+
+header button:hover a {
+    color: var(--hr-red);
+}
+
+#logo a {
+    display: flex;
+    align-items: center;
 }
 
 #logo path {
@@ -51,14 +71,19 @@ header button {
 
 #burger_menu_button {
     display: block;
-    transition: all 300ms;
 }
+
 #burger_menu_button rect {
     transition: all 300ms;
 }
 
 #burger_menu_button button {
     padding: 8px;
+}
+
+#burger_menu_button:hover #burger_icon {
+    fill: var(--hr-red);
+    transition: 200ms;
 }
 
 #burger_menu button {
@@ -69,13 +94,13 @@ header button {
     position: absolute;
     top: 0;
     right: 0;
-    height: 100vh;
+    height: 100%;
     width: 0;
     display: flex;
     justify-content: center;
     align-content: center;
     background-color: var(--white);
-    transition: all 300ms;
+    transition: 300ms;
     z-index: 1;
 }
 
@@ -91,9 +116,17 @@ header button {
     margin: 30px 0;
 }
 
+#slide_buttons button a {
+    color: var(--gray);
+}
+
 #slide_buttons button:hover {
     color: var(--hr-dark-blue);
     border-left: var(--hr-red) solid 3px;
+}
+
+#slide_buttons button a:hover {
+    color: var(--hr-dark-blue);
 }
 
 #slide_buttons span {
@@ -103,6 +136,7 @@ header button {
 }
 
 @media (pointer:coarse) {
+
     #header_container {
         height: 200px;
     }
@@ -141,4 +175,10 @@ header button {
     #slide_buttons {
         transform: scale(2);
     }
+}
+
+.logout-button {
+    color: var(--gray);
+    outline: none;
+    text-decoration: none;
 }

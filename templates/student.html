@@ -1,12 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}Studenten{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock head %}
+{% block content %}
+    <main>
+        <h1>Studenten</h1>
+        <div id="search_container">
+            <label>
+                <input type="search" id="search_input" placeholder="Zoek">
+            </label>
+        </div>
+        <div id="student_table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Studentennummer</th>
+                        <th>Voornaam</th>
+                        <th>Achternaam</th>
+                        <th>Klas</th>
+                    </tr>
+                </thead>
+              <tbody></tbody>
+            </table>
+        </div>
+    </main>
+{% endblock %}
+{% block script %}
+    {{ super() }}
+    <script src="../static/js/student.js"></script>
+{% endblock script %}

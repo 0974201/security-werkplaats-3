@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}QR scan{% endblock %}
+{% block head %}
+    {{ super() }}
+    <script src="https://unpkg.com/@zxing/library@latest"></script>
+    <!-- https://github.com/zxing-js/library -->
+{% endblock head %}
+{% block content %}
+    <main>
+        <h1 id="QR_Scan_Text">Scan QR Code</h1>
+        <div id="test">
+        </div>
+
+        <div id="qrscan-container">
+            <video id="qrscan"></video>
+        </div>
+
+        <div id="qrresult">
+            <p id="qrres"></p>
+        </div>
+       
+    </main>
+{% endblock content %}
+{% block script %}
+    {{ super() }}
+    <script src="../static/js/qr.js"></script>
+    <script src="../static/js/qrgen.js"></script>
+{% endblock script %}

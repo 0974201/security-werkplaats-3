@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+    <div id="maih">
+        <div id="meeting-border">
+            <div id="meeting-header">Meetings
+                <div class="meeting-link">
+                    <button  id="Select-Planning-button" type="button">
+                        <a href="/meeting/new">
+                            <svg  class="plus-knop" xmlns="http://www.w3.org/2000/svg" fill="#FFFFFE" viewBox="0 0 18 18"><path d="M18 10h-8v8H8v-8H0V8h8V0h2v8h8v2z"></path></svg>
+                        </a>
+                    </button>
+                </div>
+            </div>
+
+            <div id= "meeting-and-plan">
+                <div id="meeting-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th> Eigen Agenda </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>SLC</td>
+                            </tr>
+                            <tr>
+                                <td>Wiskunde</td>
+                            </tr>
+                            <tr>
+                                <td>UX</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="Docent-Planning">
+                <!-- De dropdown lijst voor andere docenten -->
+                    <label>Selecteer docent:
+                        <select name="Select-Teacher" id="Select-Teacher">
+                        <option disabled selected>Selecteer docent</option>
+                            {% for teacher in teachers %}
+                                <option value="{{ teacher[0] }}">{{ teacher[0] }}</option>
+                            {% endfor %}
+                        </select>
+                    </label>
+                    <table id="Docent-Table">
+                        <thead>
+                            <tr>
+                                <th colspan="4">Docent</th>
+                            </tr>
+                        </thead>
+                        <tbody id="docent-body">
+                            <tr>
+                                <td>Selecteer docent</td>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class= "Greet-Balk" id="Greet-Balk"> <br>
+            {% if session.logged_in %}
+                <p class="Greet-Text">
+                    Hoi, {{ session.username }}
+                </p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock content %}
+
+{% block script %}
+{{ super() }}
+<script src="../static/js/link.js">
+</script>
+{% endblock script %}

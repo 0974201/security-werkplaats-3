@@ -1,15 +1,12 @@
-import os
 import sqlite3
 from sqlite3 import OperationalError
+from lib.db import Database
 
-
-class ClassManagement:
+class ClassManagement(Database):
     """regelt de klassen enzo"""
 
     def __init__(self, db_file):
-        self.db_file = db_file
-        if not os.path.exists(self.db_file):
-            raise FileNotFoundError(f"F in the chat for {db_file}")
+        super().__init__(db_file)
 
     def get_class(self):
         try:
@@ -17,6 +14,9 @@ class ClassManagement:
             cursor = conn.cursor()
 
             cursor.execute("SELECT * FROM klas")
+
+            classes = cursor.fetchall()
+
             conn.commit() 
 
             conn.close()
@@ -25,12 +25,61 @@ class ClassManagement:
             print("yeet")
             raise e
 
+        return classes
+
+
     def get_enrollment(self):
         try:
             conn = sqlite3.connect(self.db_file)
             cursor = conn.cursor()
 
             cursor.execute("SELECT * FROM enrollment")
+            enrollment = cursor.fetchall()
+            conn.commit() 
+
+            conn.close()
+
+        except OperationalError as e:
+            print("yeet")
+            raise e
+        return enrollment
+    
+    def add_class(self, klas):
+        try:
+            conn = sqlite3.connect(self.db_file)
+            cursor = conn.cursor()
+
+            cursor.execute(f"INSERT INTO klas (id) VALUES (?)", [klas])
+            conn.commit() 
+
+            conn.close()
+
+        except OperationalError as e:
+            print("yeet")
+            raise e
+
+    def edit_class(self, klas):
+        try:
+            conn = sqlite3.connect(self.db_file)
+            cursor = conn.cursor()
+
+            cursor.execute(f"UPDATE klas SET id = ? WHERE id = ?", [klas])
+            conn.commit() 
+
+            conn.close()
+
+        except OperationalError as e:
+            print("yeet")
+            raise e
+
+
+    def delete_class(self, klas):
+        try:
+            conn = sqlite3.connect(self.db_file)
+            cursor = conn.cursor()
+
+            cursor.execute(f"DELETE FROM klas WHERE id = ?", [klas])
+
             conn.commit() 
 
             conn.close()

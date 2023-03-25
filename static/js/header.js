@@ -10,13 +10,13 @@ const logoOutside = document.querySelector("#logo_outside");
 
 const logoInside = document.querySelector("#logo_inside");
 const logoText = document.querySelector("#logo_text path");
+const headerMenu =document.querySelector("#header_menu_buttons")
 const headerButtons = document.querySelectorAll("#header_menu_buttons button");
 
 const hrRed = "#d30f4c";
 const hrRed2 = "#C03";
 const white = "#fff";
 const semiTransperant = "rgba(0, 0, 0, 0.2)";
-const transperant = "rgba(0, 0, 0, 0)"
 
 const crossLine1 = {x: -5, y: 0, transform: "rotate(45)"}
 const crossLine2 = {height: 0}
@@ -82,6 +82,7 @@ function burgerMenuFoldOut() {
     logoOutside.style.fill = burger_toggle ? hrRed : white;
     logoInside.style.fill = burger_toggle ? white : hrRed2;
     logoText.style.fill = burger_toggle ? hrRed : white;
+    headerMenu.style.display = burger_toggle ? "none" : "flex";
 
     Array.from(headerButtons).forEach((button) => {
         button.style.backgroundColor = burger_toggle ? white : semiTransperant;

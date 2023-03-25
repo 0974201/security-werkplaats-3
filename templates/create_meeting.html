@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}Meeting{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock head %}
+{% block content %}
+    <div id="meeting_form">
+        <div id="meeting_form_title">
+            <h1>Maak nieuwe meeting</h1>
+        </div>
+        <div id="inputs">
+            <div id="fields">
+                <label>Naam les:<br>
+                    <input id="meeting_name" name="meeting_name" placeholder="Naam les">
+                </label>
+                <label>Datum:<br>
+                    <input id="meeting_date" name="meeting_date" type="date">
+                </label>
+                <label>Start Tijd:<br>
+                    <input id="meeting_start_time" name="meeting_start_time" type="time" min="8:30">
+                </label>
+                <label>Eind Tijd:<br>
+                    <input id="meeting_end_time" name="meeting_end_time" type="time" max="20:00">
+                </label>
+                <label>Locatie:<br>
+                    <input id="meeting_location" name="meeting_location" placeholder="Naam locatie">
+                </label>
+            </div>
+            <div id="lists">
+                <div id="teacher_box">
+                    <label>Leraar(en):<br>
+                        <select id="teacher_select">
+                            <option disabled selected>Selecteer leraren</option>
+                            {% for teacher in teachers %}
+                                <option>{{ teacher[0] }}</option>
+                            {% endfor %}
+                        </select>
+                    </label>
+                    <table>
+                        <tbody id="teacher_list"></tbody>
+                    </table>
+                </div>
+                <div id="class_box">
+                    <label>Klas(sen):<br>
+                        <select id="class_select">
+                        <option disabled selected>Selecteer Klassen</option>
+                            {% for class in classes %}
+                                <option>{{ class[0] }}</option>
+                            {% endfor %}
+                        </select>
+                    </label>
+                    <table>
+                        <tbody id="class_list"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="button">
+            <button onclick="log()" class="button1">Plan in</button>
+            <span id="message"></span>
+        </div>
+    </div>
+{% endblock %}
+{% block script %}
+    {{ super() }}
+    <script src="../static/js/get_datetime.js"></script>
+    <script src="../static/js/creat_meeting.js" defer></script>
+{% endblock script %}

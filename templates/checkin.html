@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Check In{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock head %}
+{% block content %}
+    <div id="checkin_content">
+            <h3 id="checkin_text">Check-In</h3>
+               <span id="message"></span>
+                <div id="answer_box">
+                   <div id="questions_input">
+                    <label id="student_text">Studenten Id:</br>
+                        <input id ='studentid' name="studentid" minlength="7" maxlength="7"></label>
+                        {% if question is not none %}
+                    <label id="question_text">{{ question }}<br>
+                        <input id ="vraag1" name="vraag1">
+                    </label>
+                   </div>
+                </div>
+            {% endif %}
+            <button id ="button_checkin" class="button1">Ik ben aanwezig</button>
+    </div>
+{% endblock %}
+{% block script %}
+    {{ super() }}
+    <script src="../static/js/checkin.js"></script>
+{% endblock script %}

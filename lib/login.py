@@ -1,22 +1,20 @@
-import os
 import sqlite3
 from sqlite3 import OperationalError
+from lib.db import Database
 
-
-class Login:
+class Login(Database):
     """regelt login enzo"""
 
     def __init__(self, db_file):
-        self.db_file = db_file
-        if not os.path.exists(self.db_file):
-            raise FileNotFoundError(f"F in the chat for {db_file}")
+        super().__init__(db_file)
 
     def login_user(self, usn, pwd):
         try:
             conn = sqlite3.connect(self.db_file)
             cursor = conn.cursor()
+            
+            cursor.execute("SELECT * FROM login WHERE email = ? AND wachtwoord = ?", usn, pwd)
 
-            cursor.execute("SELECT * FROM login WHERE gebruikersnaam = ? AND wachtwoord = ?", usn, pwd)
             user = cursor.fetchone()
             conn.commit() 
 
@@ -25,4 +23,5 @@ class Login:
         except OperationalError as e:
             print("yeet")
             raise e
+            
         return user

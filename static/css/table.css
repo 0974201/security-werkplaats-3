@@ -12,19 +12,20 @@ table {
     color: var(--hr-dark-blue);
 }
 
-tr {
-    background-color: var(--white);
+th {
+    background-color: var(--bg-color);
 }
 
-tr td{
+tr {
+    background-color: var(--white);
+    border-radius: 5px;
+}
+
+tr td th {
     background-color: transparent;
     padding: 5px;
 }
 
-tr td:first-child {
-    border-radius: 6px 0 0 0;
-}
-
-tr td:last-child {
-    border-radius: 0 6px 6px 0;
+#test #tabel {
+    margin-bottom: 5px;
 }
