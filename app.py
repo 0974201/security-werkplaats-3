@@ -17,6 +17,7 @@ from lib.enrollment import EnrollmentManagement
 from lib.meeting import MeetingManagement
 from lib.presence import PresenceManagement
 from lib.checkin import CheckinManagement
+from lib.db_test import mysql_test
 
 # no touchy
 projpath = path.join(path.dirname(__file__), '.env')
@@ -36,19 +37,20 @@ app.config['JSON_SORT_KEYS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = '../databases/demo_data.db'
 
 # database shiz
-DB_FILE = os.path.join(app.root_path, "databases", "demo_data.db")
-#DB_INFO = {'host' : environ.get("DB_HOST"), 'user' : environ.get("DB_USER"), 'password' : environ.get("DB_PASSWORD"), 'database': environ.get("DB_NAME")}
-print(DB_INFO)
+#DB_FILE = os.path.join(app.root_path, "databases", "demo_data.db")
+DB_INFO = {'host' : environ.get("DB_HOST"), 'user' : environ.get("DB_USER"), 'password' : environ.get("DB_PASSWORD"), 'database': environ.get("DB_NAME")}
+#print(DB_INFO)
 
-accdb = AccountManagement(DB_FILE)
-logindb = Login(DB_FILE)
-studentdb = StudentManagement(DB_FILE)
-teacherdb = TeacherManagement(DB_FILE)
-classdb = ClassManagement(DB_FILE)
-enrollmentdb = EnrollmentManagement(DB_FILE)
-meetingdb = MeetingManagement(DB_FILE)
-presencedb = PresenceManagement(DB_FILE)
-checkindb = CheckinManagement(DB_FILE)
+# accdb = AccountManagement(DB_FILE)
+# logindb = Login(DB_FILE)
+# studentdb = StudentManagement(DB_FILE)
+# teacherdb = TeacherManagement(DB_FILE)
+# classdb = ClassManagement(DB_FILE)
+# enrollmentdb = EnrollmentManagement(DB_FILE)
+# meetingdb = MeetingManagement(DB_FILE)
+# presencedb = PresenceManagement(DB_FILE)
+# checkindb = CheckinManagement(DB_FILE)
+testdb = mysql_test(DB_INFO)
 
 # routes
 @app.before_request
@@ -750,14 +752,6 @@ def QR_checkin(meetingId):
 def teapot():
     return render_template("teapot.html"), 418
 
-@app.route('/index')
-@app.route('/')
-def index():
-    if session.get('logged_in'):
-     return redirect('dashboard')
-    else:
-     return render_template('home.html')
-    
 @app.route('/signout_meeting')
 def signout_meeting():
     return render_template('signout_meeting.html')
