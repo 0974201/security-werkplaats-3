@@ -1,27 +1,29 @@
-import sqlite3
-from sqlite3 import OperationalError
-from lib.db import Database
+import mysql.connector
+from mysql.connector import errorcode
+from lib.db_test import mysql_test
 
-class ClassManagement(Database):
+class ClassManagement(mysql_test):
     """regelt de klassen enzo"""
 
-    def __init__(self, db_file):
-        super().__init__(db_file)
+    def __init__(self, conf):
+        super().__init__(conf)
 
     def get_class(self):
         try:
-            conn = sqlite3.connect(self.db_file)
+            conn = mysql.connector.connect()
+            conn.reconnect()
             cursor = conn.cursor()
 
             cursor.execute("SELECT * FROM klas")
 
             classes = cursor.fetchall()
+            print(classes)
 
             conn.commit() 
 
             conn.close()
 
-        except OperationalError as e:
+        except mysql.connector.Error as e:
             print("yeet")
             raise e
 
@@ -30,7 +32,8 @@ class ClassManagement(Database):
 
     def get_enrollment(self):
         try:
-            conn = sqlite3.connect(self.db_file)
+            conn = mysql.connector.connect()
+            conn.reconnect()
             cursor = conn.cursor()
 
             cursor.execute("SELECT * FROM enrollment")
@@ -39,14 +42,15 @@ class ClassManagement(Database):
 
             conn.close()
 
-        except OperationalError as e:
+        except mysql.connector.Error as e:
             print("yeet")
             raise e
         return enrollment
     
     def add_class(self, klas):
         try:
-            conn = sqlite3.connect(self.db_file)
+            conn = mysql.connector.connect()
+            #conn.reconnect()
             cursor = conn.cursor()
 
             cursor.execute(f"INSERT INTO klas (id) VALUES (?)", [klas])
@@ -54,13 +58,14 @@ class ClassManagement(Database):
 
             conn.close()
 
-        except OperationalError as e:
+        except mysql.connector.Error as e:
             print("yeet")
             raise e
 
     def edit_class(self, klas):
         try:
-            conn = sqlite3.connect(self.db_file)
+            conn = mysql.connector.connect()
+            conn.reconnect()
             cursor = conn.cursor()
 
             cursor.execute(f"UPDATE klas SET id = ? WHERE id = ?", [klas])
@@ -68,14 +73,15 @@ class ClassManagement(Database):
 
             conn.close()
 
-        except OperationalError as e:
+        except mysql.connector.Error as e:
             print("yeet")
             raise e
 
 
     def delete_class(self, klas):
         try:
-            conn = sqlite3.connect(self.db_file)
+            conn = mysql.connector.connect()
+            conn.reconnect()
             cursor = conn.cursor()
 
             cursor.execute(f"DELETE FROM klas WHERE id = ?", [klas])
@@ -84,6 +90,6 @@ class ClassManagement(Database):
 
             conn.close()
 
-        except OperationalError as e:
+        except mysql.connector.Error as e:
             print("yeet")
             raise e

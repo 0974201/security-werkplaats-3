@@ -45,7 +45,7 @@ DB_INFO = {'host' : environ.get("DB_HOST"), 'user' : environ.get("DB_USER"), 'pa
 # logindb = Login(DB_FILE)
 # studentdb = StudentManagement(DB_FILE)
 # teacherdb = TeacherManagement(DB_FILE)
-# classdb = ClassManagement(DB_FILE)
+classdb = ClassManagement(DB_INFO)
 # enrollmentdb = EnrollmentManagement(DB_FILE)
 # meetingdb = MeetingManagement(DB_FILE)
 # presencedb = PresenceManagement(DB_FILE)
@@ -65,6 +65,8 @@ def check_login():
 def index():
     #if not session.get('logged_in')
     #    return redirect(url_for('login'))
+    derp = testdb.test
+    print(derp)
     return render_template("index.html", title=index)
 
 @app.route("/base")
