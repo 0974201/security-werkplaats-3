@@ -28,7 +28,7 @@ function fill_table(obj){
 
     for(const account of accounts){
         let tr = document.createElement('tr');
-        tr.innerHTML = '<td id="doei">' + account["id"] + '</td>'
+        tr.setHTML = '<td id="doei">' + account["id"] + '</td>'
         + '<td>' + account["email"] + '</td>'
         + '<td>' + account["docent"] + '</td>'
         + '<td>' + account["is_admin"] + '</td>';

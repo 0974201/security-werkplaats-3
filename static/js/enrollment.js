@@ -26,7 +26,7 @@ function fill_table(obj){
 
     for(const enrollment of enrollments){
         let tr = document.createElement('tr');
-        tr.innerHTML = '<td id="doei">' + enrollment["id"] + '</td>'
+        tr.setHTML = '<td id="doei">' + enrollment["id"] + '</td>'
         + '<td>' + enrollment["student"] + '</td>'
         + '<td>' + enrollment["voornaam"] + '</td>'
         + '<td>' + enrollment["achternaam"] + '</td>'

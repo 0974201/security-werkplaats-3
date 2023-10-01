@@ -52,8 +52,8 @@ function createTable(meetingArray) {
             }
             planningLength++
         }
-        if (tbody.innerHTML === "") {
-            tbody.innerHTML = "<td>Geen aankomende bijeenkomsten</td>"
+        if (tbody.setHTML === "") {
+            tbody.setHTML = "<td>Geen aankomende bijeenkomsten</td>"
         }
         function filterDate(meetingArray) {
             return meetingArray["date"] >= currentDate

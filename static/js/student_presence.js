@@ -22,7 +22,7 @@ async function get_student_presence(){
 function fill_name(name){
     const namePlate = document.querySelector("#student_name")
     namePlate.replaceChildren()
-    namePlate.innerHTML = name["voornaam"] + " " + name["achternaam"]
+    namePlate.setHTML = name["voornaam"] + " " + name["achternaam"]
 }
 
 function fill_table(presence_list){
@@ -46,7 +46,7 @@ function fill_table(presence_list){
                 presence = '<td class="maybe_presence">Afgemeld</td>'
                 break
         }
-        tr.innerHTML = '<td>' + data["naam"] + '</td>'
+        tr.setHTML = '<td>' + data["naam"] + '</td>'
         + '<td>' + data["datum"] + '</td>'
         + presence
 

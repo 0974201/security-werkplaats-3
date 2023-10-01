@@ -21,7 +21,7 @@ function fill_select(students){
     
     for(const student of students){
         let op = document.createElement('option');
-        op.innerHTML = student["voornaam", "achternaam"];
+        op.setHTML = student["voornaam", "achternaam"];
         select.appendChild(op);
     }
 }

@@ -28,7 +28,7 @@ function fill_table(obj){
     for(const klas of klassen){
         
         let tr = document.createElement('tr');
-        tr.innerHTML = '<td>' + klas + '</td>';
+        tr.setHTML = '<td>' + klas + '</td>';
         tb.appendChild(tr);
     }
 }
