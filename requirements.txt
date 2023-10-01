@@ -3,6 +3,7 @@ Flask-SQLAlchemy
 Flask-Login
 Flask-Security-Too
 Flask-WTF
+flask-talisman
 Flask-bcrypt
 bcrypt
 wtforms

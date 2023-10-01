@@ -6,6 +6,7 @@
 {% block content %}
         <main>
             <form action="/handle_login" method="POST" class="login-form">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
                 <p class="login-header"><b>Log in</b></p>
                     {{ message }}
                 <p class="username-field">

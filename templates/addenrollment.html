@@ -8,6 +8,7 @@
         <h1>Voeg student toe aan een klas</h1>            
         <div>
             <form id="inschrijving" method="POST" action="/admin/enrollment/add">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
                 <label for="student">Student</label>
                 <select id="student" name="student"><option disabled selected>Kies student</option>
                     {% for student in studenten %}

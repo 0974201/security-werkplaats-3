@@ -8,6 +8,7 @@
         <h1>Voeg een nieuwe student toe</h1>            
         <div>
             <form id="student" method="POST" action="/admin/student/add">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
                 <label for="studentennummer">Studentennummer</label>
                 <input type="number" name="studentennummer" value="{{studentennummer}}">
                 <label for="voornaam">Voornaam</label>

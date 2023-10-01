@@ -10,6 +10,7 @@
         </div>
         <div id="inputs">
             <div id="fields">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
                 <label>Naam les:<br>
                     <input id="meeting_name" name="meeting_name" placeholder="Naam les">
                 </label>

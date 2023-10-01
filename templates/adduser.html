@@ -8,6 +8,7 @@
         <h1>Voeg nieuw gebruiker toe</h1>            
         <div>
             <form id="user" method="POST" action="/admin/account/add">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
                 <label for="docent">Docentencode</label>
                 <input type="text" name="docent" value="{{docent}}">
                 <label for="email">Email</label>

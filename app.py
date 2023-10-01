@@ -4,6 +4,8 @@ import os
 from os import environ, path
 from dotenv import load_dotenv
 from flask import Flask, render_template, request, session, redirect, url_for, json, jsonify, flash 
+from flask_wtf import CSRFProtect
+from flask_talisman import Talisman
 
 from lib.account import AccountManagement
 from lib.login import Login
@@ -24,12 +26,23 @@ LISTEN_ALL = "0.0.0.0"
 FLASK_IP = LISTEN_ALL
 FLASK_PORT = 81
 FLASK_DEBUG = True
+CSRF = CSRFProtect()
 
 # app config
 app = Flask(__name__)
 app.config['SECRET_KEY'] = environ.get('SECRET_KEY')
 app.config['JSON_SORT_KEYS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = '../databases/demo_data.db'
+
+CSRF.init_app(app)
+csp = {
+    'default-src': '\'self\'', 
+    'img-src': ['\'self\'', 'live.staticflickr.com'], 
+    'script-src': ['\'self\'', 'https://unpkg.com/@zxing/library@latest'], 
+    'style-src': '*'
+    }
+
+talisman = Talisman(app, content_security_policy = csp)
 
 # database shiz
 DB_FILE = os.path.join(app.root_path, "databases", "demo_data.db")
