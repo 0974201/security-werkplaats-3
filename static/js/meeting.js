@@ -47,28 +47,28 @@ const get_meeting = async () => {
 
                     switch (data["presence_list"][student_count]["presence"]) {
                         case 0:
-                            meetingInfo.innerHTML += student_name + student_class + student_afwezig + student_check_in_time + presence_options
+                            meetingInfo.setHTML += student_name + student_class + student_afwezig + student_check_in_time + presence_options
                             break
                         case 1:
-                            meetingInfo.innerHTML += student_name + student_class + student_aanwezig + student_check_in_time + presence_options
+                            meetingInfo.setHTML += student_name + student_class + student_aanwezig + student_check_in_time + presence_options
                             student_presence++
                             break
                         case 2:
-                            meetingInfo.innerHTML += "<tr class='afgemeld_row'>" + student_name + student_class + student_afgemeld + student_check_in_time + presence_options +
+                            meetingInfo.setHTML += "<tr class='afgemeld_row'>" + student_name + student_class + student_afgemeld + student_check_in_time + presence_options +
                                 "<td class='afgemeld_reason'>" + afgemeld_reason + "</td>" + "</tr>"
                             break
                         default:
-                            meetingInfo.innerHTML += student_name + student_class + student_error + presence_options
+                            meetingInfo.setHTML += student_name + student_class + student_error + presence_options
                     }
                     student_count++
                 }
                 meetingFooter.replaceChildren()
-                meetingFooter.innerHTML = "<td></td><td></td><td>" + student_presence + "/" + student_count + " " + "aanwezig" + "</td><td></td>"
+                meetingFooter.setHTML = "<td></td><td></td><td>" + student_presence + "/" + student_count + " " + "aanwezig" + "</td><td></td>"
             } else {
                 console.log(data.length)
                 const meetingInfo = document.querySelector("#presence_table")
                 meetingInfo.replaceChildren()
-                meetingInfo.innerHTML = "nope"
+                meetingInfo.setHTML = "nope"
             }
         }
 

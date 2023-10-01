@@ -24,7 +24,7 @@ function fill_table(docenten){
 
     for(const docent of docenten){
         let tr = document.createElement('tr');
-        tr.innerHTML = '<td>' + docent["id"] + '</td>'
+        tr.setHTML = '<td>' + docent["id"] + '</td>'
         + '<td>' + docent["voornaam"] + '</td>'
         + '<td>' + docent["achternaam"] + '</td>'
         + '<td>' + docent["email"] + '</td>'
@@ -35,7 +35,7 @@ function fill_table(docenten){
     // a click function for all rows that redirects to the student page of the selected row
     document.querySelectorAll("#docent_table tbody tr").forEach(row => {
         row.addEventListener("click", function (){
-            window.location.href = "/admin/teacher/" + this.cells[0].innerHTML
+            window.location.href = "/admin/teacher/" + this.cells[0].setHTML
         }, false)
     })
 }

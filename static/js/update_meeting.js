@@ -88,18 +88,18 @@ async function get_question() {
 function changeTitle() {
     let question_title = question.value
     localStorage.setItem('QuestionTitle', question_title)
-    document.querySelector('#question_title').innerHTML = question_title
+    document.querySelector('#question_title').setHTML = question_title
 }
 
 // error message //
 function checkVraag() {
     message = 'Vul een vraag in ..' + '<br>'
-    document.querySelector('#message_question').innerHTML = message;
+    document.querySelector('#message_question').setHTML = message;
 }
 
 function noVraag() {
     message = 'Meeting is voorbij' + '<br>'
-    document.querySelector('#message_question').innerHTML = message;
+    document.querySelector('#message_question').setHTML = message;
 }
 
 // makes the Antwoord , result table appear //
@@ -161,7 +161,7 @@ function fillAnswers(answers) {
 
     for (const answer of answers) {
         let tr = document.createElement('tr');
-        tr.innerHTML = '<td>' + answer[2] + "</td>"
+        tr.setHTML = '<td>' + answer[2] + "</td>"
         console.log(answer)
         tb.appendChild(tr);
     }
