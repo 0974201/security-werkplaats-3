@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 from flask import Flask, render_template, request, session, redirect, url_for, json, jsonify, flash 
 from flask_wtf import CSRFProtect
 from flask_talisman import Talisman
+from flask_bcrypt import Bcrypt
 
 from lib.account import AccountManagement
 from lib.login import Login
@@ -43,6 +44,8 @@ csp = {
     }
 
 talisman = Talisman(app, content_security_policy = csp)
+
+bcrypt = Bcrypt(app)
 
 # database shiz
 DB_FILE = os.path.join(app.root_path, "databases", "demo_data.db")
@@ -590,7 +593,8 @@ def add_account_post():
         return redirect(url_for('dashboard'))
     
     email = request.form.get('email').strip()
-    wachtwoord = request.form.get('wachtwoord')
+    wachtwoord = bcrypt.generate_password_hash(request.form.get('wachtwoord')).decode('utf-8')
+    #wachtwoord = request.form.get('wachtwoord')
     docent = request.form.get('docent')
     admin =request.form.get('admin')
 
@@ -735,9 +739,11 @@ def show_login():
 @app.post("/handle_login")
 def handle_login():
     email = request.form.get("username")
-    wachtwoord = request.form.get("password")
-    print(email, wachtwoord)
-    check = logindb.login_user(email, wachtwoord)
+    #wachtwoord = request.form.get("password")
+    check_ww = bcrypt.check_password_hash(wachtwoord ,request.form.get("password"))
+    #print(email, wachtwoord)
+    #check = logindb.login_user(email, wachtwoord)
+    check = logindb.login_user(email, check_ww)
     print(check)
 
     if(check):
